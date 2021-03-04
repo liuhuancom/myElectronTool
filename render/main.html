@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <link rel="stylesheet" href="styles/output.css">
+  <script>window.$ = window.jQuery = require('jquery');</script>
+</head>
+
+<body style="background: white;">
+  <div class="container mx-auto">
+
+    <p>配置文件路径</p>
+    <p id="store_path"></p>
+    <hr>
+    <br>
+
+
+    <button id="btn_tfdev" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      更新tfdev
+    </button>
+
+    <button id="btn_tf" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      更新tf
+    </button>
+
+    <button id="btn_tafang" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      更新tafang
+    </button>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // console.log('aaaa');
+    // require('../ssh.js');
+    const path = require('path')
+    const { remote, ipcRenderer } = require('electron');
+    const browserWindow = require('electron').remote.BrowserWindow
+
+    $('#store_path').text(remote.app.store.path);
+
+    $('#btn_tfdev').on('click', (e) => {
+      console.log('btn_tfdev');
+      let win = new browserWindow({
+        width: 1000,
+        height: 800,
+        webPreferences: {
+          nodeIntegration: true,
+          enableRemoteModule: true,
+        }
+      });
+      // win.loadFile('tfdev/index.html');
+      win.loadURL(path.join('file://', __dirname, 'gametf/tfdev.html'));
+
+      win.on('closed', () => {
+        win = null;
+      })
+
+    });
+
+      $('#btn_tf').on('click', (e) => {
+        console.log('btn_tf');
+        let win = new browserWindow({
+          width: 1000,
+          height: 800,
+          webPreferences: {
+            nodeIntegration: true,
+            enableRemoteModule: true,
+          }
+        });
+        // win.loadFile('tfdev/index.html');
+        win.loadURL(path.join('file://', __dirname, 'gametf/tf.html'));
+
+        win.on('closed', () => {
+          win = null;
+        })
+      });
+
+    $('#btn_tafang').on('click', (e) => {
+      console.log('btn_tafang');
+      let win = new browserWindow({
+        width: 1000,
+        height: 800,
+        webPreferences: {
+          nodeIntegration: true,
+          enableRemoteModule: true,
+        }
+      });
+      // win.loadFile('tfdev/index.html');
+      win.loadURL(path.join('file://', __dirname, 'gametf/tafang.html'));
+
+      win.on('closed', () => {
+        win = null;
+      })
+    });
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>

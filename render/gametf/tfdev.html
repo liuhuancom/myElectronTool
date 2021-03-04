@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>tfdev</title>
+    <link rel="stylesheet" href="../styles/output.css">
+    <script>window.$ = window.jQuery = require('jquery');</script>
+</head>
+
+<body>
+    <div class="container mx-auto">
+
+
+
+        <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
+                更新tfdev
+            </h2>
+            
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                   
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="server_ip">服务器地址</label>
+                        <input id="server_ip" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="server_port">端口号</label>
+                        <input id="server_port" type="number"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="ssh_key">本地密钥文件 不填用密码</label>
+                        <input id="ssh_key" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="root_name">账号</label>
+                        <input id="root_name" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="password">密码</label>
+                        <input id="password" type="password"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    
+                    
+                </div>
+
+
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <p id="server_log"></p>    
+                </div>
+
+                <div class="flex justify-end mt-6">
+                    <button id="save_server"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        保存
+                    </button>
+                    
+
+                    <!-- <button id="select"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        选择文件夹
+                    </button> -->
+                    
+
+                </div>
+            
+
+
+            
+
+
+
+
+        </section>
+
+        <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
+                更新tfdev
+            </h2>
+            
+                <div class="grid grid-cols-1 gap-6 mt-4">
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="username">本地项目目录</label>
+                        <button id="package"
+                            class="px-2 py-1 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                            打zip包
+                        </button>
+                        <input id="local_path" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        
+                        
+                    </div>
+
+                    
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="remote_cdn_path">远程cdn目录</label>
+                        <input id="remote_cdn_path" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="remote_php_path">远程php目录</label>
+                        <input id="remote_php_path" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <span>进度</span>
+                        <div id="progress" class="bg-red-100"> 
+                        
+                        </div>
+                    </div>
+
+                
+
+                </div>
+
+
+                
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <p id="local_log">a</p>
+                </div>
+
+
+                <div class="flex justify-end mt-6">
+                    <button id="save_path"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        保存
+                    </button>
+
+                   
+
+                    <button id="upload"
+                        class="ml-2 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        上传
+                    </button>
+
+                    <!-- <button id="one_key_upload"
+                        class="ml-2 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        一键打包上传
+                    </button> -->
+
+                    <!-- <button id="select"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        选择文件夹
+                    </button> -->
+                    
+
+                </div>
+            
+
+
+
+
+
+
+        </section>
+
+
+        
+
+
+
+    </div>
+
+    
+
+    <script>
+        
+        let name = 'tfdev';
+    </script>
+
+    <script src="index.js"></script>
+
+
+    <!-- <script>
+        console.log('tfdev');
+        const fs = require('fs');
+        const path = require('path');
+        const { remote, ipcRenderer } = require('electron');
+        const { Client } = require('ssh2');
+        // console.log('remote', remote);
+        // console.log('remote store', remote.app.store.get('name'));
+
+        const utils = require('../utils');
+
+        let store = remote.app.store;
+
+        let name = 'tfdev';
+        
+        let global_connent_conf = null;
+
+        set_data_for_store();
+
+        $('#save_server').on('click', (e) => {
+            console.log('save_server');
+            store.set(`${name}.server`, {
+                server_ip: $('#server_ip').val(),
+                ssh_key: $('#ssh_key').val(),
+                root_name: $('#root_name').val(),
+                password: $('#password').val(),
+                server_port: parseInt($('#server_port').val()),
+            });
+
+            $('#server_log').text('保存完成');
+ 
+            let tfdev = store.get(`${name}.server`);
+            console.log('tfdev server ',tfdev);
+            
+            let server_ip = store.get(`${name}.server.server_ip`);
+            if(!server_ip){
+                $('#server_log').text('没有填写ip');
+                return
+            }
+
+            let ssh_key = store.get(`${name}.server.ssh_key`);
+            let root_name = store.get(`${name}.server.root_name`);
+            let password = store.get(`${name}.server.password`);
+            let server_port = store.get(`${name}.server.server_port`);
+
+            if(!server_port){
+                server_port = 22;
+                store.set(`${name}.server.server_port`, server_port);
+                $('#server_port').val(server_port)
+            }
+
+            if(!root_name){
+                root_name = 'root'             
+                store.set(`${name}.server.root_name`, root_name);
+                $('#root_name').val(root_name)
+            }
+
+            if(!ssh_key && !password){
+                $('#server_log').text('秘钥和密码需要填写一个');
+                return
+            }
+
+            $('#server_log').text('')
+
+            
+ 
+            const connent_data = {
+                host: server_ip,
+                port: server_port,
+                username: root_name,
+                // password: password,
+            }
+
+            if(ssh_key){
+                connent_data['privateKey'] = fs.readFileSync(ssh_key);
+            }
+            if(password){
+                connent_data['password'] = password;
+            }
+
+            store.set(`${name}.server.connent_data`,connent_data);
+
+            global_connent_conf = connent_data;
+
+            // 连接服务器测试
+            utils.ssh_test(connent_data, (d) => {
+                $('#server_log').text(d);
+            });
+
+
+        });
+
+
+        $('#save_path').on('click', (e) => {
+            console.log('save_path');
+            store.set(`${name}.local`, {
+                local_path: $('#local_path').val(),
+                remote_cdn_path: $('#remote_cdn_path').val(),
+                remote_php_path: $('#remote_php_path').val(),
+            });
+            let tfdev = store.get(`${name}.local`);
+            console.log('tfdev local ',tfdev);
+            $('#local_log').text('保存完成');
+            
+
+        });
+
+
+
+        $('#package').on('click', (e) => {
+            // $('#progress').width
+            let local_path = $('#local_path').val();
+            // let local_path = store.get(`${name}.local.local_path`);
+            if(!local_path){
+                $('#local_log').text('没有填写本地项目目录');
+                return
+            }
+
+            $('#local_log').text('开始打包...');
+            utils.handle_zip(name,local_path,(f)=>{
+                console.log('zip file', f);
+                $('#local_log').text('打包完成' + f.file);
+            })
+            
+
+
+
+        });
+
+
+        // 上传
+        $('#upload').on('click', (e) => {
+            // $('#progress').width
+            // store.get(`${name}.server.server_ip`)
+            let connent_data = store.get(`${name}.server.connent_data`);
+
+            let local_path = $('#local_path').val();
+            if(!local_path){
+                $('#local_log').text('没有设置本地路径');
+                return
+            }
+
+            let remote_cdn_path = $('#remote_cdn_path').val();
+            if(!remote_cdn_path){
+                $('#local_log').text('没有设置远程cdn路径');
+                return
+            }
+
+            let remote_php_path = $('#remote_php_path').val();
+            if(!remote_php_path){
+                $('#local_log').text('没有设置远程php路径');
+                return
+            }
+            let zipname =  `${name}.zip`;
+
+            let local_zip_path = path.join(local_path, '../', zipname)
+            let local_zip_path_posix = path.posix.join(local_path, zipname)
+            let remoteZipFilePathPosix = path.posix.join(remote_cdn_path, zipname)
+
+            console.log('local_zip_path',local_zip_path);
+            console.log('local_zip_path_posix',local_zip_path_posix);
+            console.log('remoteZipFilePathPosix',remoteZipFilePathPosix);
+
+            utils.upload_server(
+                global_connent_conf, 
+                local_zip_path, 
+                remoteZipFilePathPosix,
+                (d)=>{
+                    $('#local_log').text(`上传进度 ${d}`);
+                },
+                ()=>{
+                    $('#local_log').text('上传完成');
+
+                    utils.unzip_server(
+                        global_connent_conf,
+                        remoteZipFilePathPosix,
+                        (d) => {
+                            $('#local_log').text('数据返回 ', d);
+                        },
+                        (c,s) => {
+                            $('#local_log').text('解压完成');
+                        }
+                    );
+                }
+            )
+
+
+
+        });
+
+
+        $('#select').on('click', (e) => {
+            console.log('select');
+            // ipcRenderer.send('tfdevopen',1111);
+
+            remote.dialog.showOpenDialog({
+                properties: ['openDirectory']
+            }).then(res =>{
+                // console.log('directory ',res);
+                // $('#log').text(JSON.stringify(res));
+            }).catch(err=>{
+                // console.log('directory err',err);
+                // $('#log').text(JSON.stringify(err));
+            })
+
+        });
+
+
+
+
+
+
+
+        function set_data_for_store(){
+            
+
+            store.get(`${name}.server.server_ip`) && $('#server_ip').val(store.get(`${name}.server.server_ip`));
+            store.get(`${name}.server.ssh_key`) && $('#ssh_key').val(store.get(`${name}.server.ssh_key`));
+            store.get(`${name}.server.root_name`) && $('#root_name').val(store.get(`${name}.server.root_name`));
+            store.get(`${name}.server.password`) && $('#password').val(store.get(`${name}.server.password`));
+            store.get(`${name}.server.server_port`) && $('#server_port').val(store.get(`${name}.server.server_port`));
+            
+
+
+            store.get(`${name}.local.local_path`) && $('#local_path').val(store.get(`${name}.local.local_path`));
+            store.get(`${name}.local.remote_cdn_path`) && $('#remote_cdn_path').val(store.get(`${name}.local.remote_cdn_path`));
+            store.get(`${name}.local.remote_php_path`) && $('#remote_php_path').val(store.get(`${name}.local.remote_php_path`));
+
+            let server_ip = store.get(`${name}.server.server_ip`);
+            let ssh_key = store.get(`${name}.server.ssh_key`);
+            let root_name = store.get(`${name}.server.root_name`);
+            let password = store.get(`${name}.server.password`);
+            let server_port = store.get(`${name}.server.server_port`);
+
+
+
+
+            const connent_data = {
+                host: server_ip,
+                port: server_port,
+                username: root_name,
+                // password: password,
+            }
+            if(ssh_key){
+                connent_data['privateKey'] = fs.readFileSync(ssh_key);
+            }
+            if(password){
+                connent_data['password'] = password;
+            }
+
+            global_connent_conf = connent_data;
+
+            
+        }
+
+
+    </script> -->
+
+</body>
+
+</html>

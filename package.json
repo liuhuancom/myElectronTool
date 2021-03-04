@@ -2,21 +2,43 @@
   "name": "learnelectron",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "main/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "electron . --debug",
+    "dist": "electron-builder --win --x64",
+    "package": "electron-packager ./ myapp --out ./build --overwrite"
+  },
+  "build": {
+    "appId": "com.xxx.app",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.2.4",
+    "devtron": "^1.4.0",
     "electron": "^11.3.0",
+    "electron-builder": "^22.10.5",
+    "electron-packager": "^15.2.0",
     "postcss": "^8.2.6",
     "tailwindcss": "^2.0.3"
   },
   "dependencies": {
+    "archiver": "^5.2.0",
     "electron-store": "^7.0.2",
     "jquery": "^3.6.0",
     "ssh2": "^0.8.9"

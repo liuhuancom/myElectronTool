@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>tf</title>
+    <link rel="stylesheet" href="../styles/output.css">
+    <script>window.$ = window.jQuery = require('jquery');</script>
+</head>
+
+<body>
+    <div class="container mx-auto">
+
+
+
+        <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
+                更新tf
+            </h2>
+            
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                   
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="server_ip">服务器地址</label>
+                        <input id="server_ip" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="server_port">端口号</label>
+                        <input id="server_port" type="number"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="ssh_key">本地密钥文件 不填用密码</label>
+                        <input id="ssh_key" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="root_name">账号</label>
+                        <input id="root_name" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="password">密码</label>
+                        <input id="password" type="password"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    
+                    
+                </div>
+
+
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <p id="server_log"></p>    
+                </div>
+
+                <div class="flex justify-end mt-6">
+                    <button id="save_server"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        保存
+                    </button>
+                    
+
+                    <!-- <button id="select"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        选择文件夹
+                    </button> -->
+                    
+
+                </div>
+            
+
+
+            
+
+
+
+
+        </section>
+
+        <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
+                更新tf
+            </h2>
+            
+                <div class="grid grid-cols-1 gap-6 mt-4">
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="username">本地项目目录</label>
+                        <button id="package"
+                            class="px-2 py-1 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                            打zip包
+                        </button>
+                        <input id="local_path" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        
+                        
+                    </div>
+
+                    
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="remote_cdn_path">远程cdn目录</label>
+                        <input id="remote_cdn_path" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="remote_php_path">远程php目录</label>
+                        <input id="remote_php_path" type="text"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <span>进度</span>
+                        <div id="progress" class="bg-red-100"> 
+                        
+                        </div>
+                    </div>
+
+                
+
+                </div>
+
+
+                
+                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <p id="local_log">a</p>
+                </div>
+
+
+                <div class="flex justify-end mt-6">
+                    <button id="save_path"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        保存
+                    </button>
+
+                   
+
+                    <button id="upload"
+                        class="ml-2 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        上传
+                    </button>
+
+                    <!-- <button id="one_key_upload"
+                        class="ml-2 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        一键打包上传
+                    </button> -->
+
+                    <!-- <button id="select"
+                        class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        选择文件夹
+                    </button> -->
+                    
+
+                </div>
+            
+
+
+
+
+
+
+        </section>
+
+
+        
+
+
+
+    </div>
+
+    
+
+    <script>
+        
+        let name = 'tf';
+    </script>
+
+    <script src="index.js"></script>
+
+
+  
+
+</body>
+
+</html>

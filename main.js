@@ -4,6 +4,9 @@ const Store = require('electron-store');
 
 const store = new Store();
 
+app.store = store
+
+
 // store.set('name', 'liuhuan');
 console.log(store.get('name'));
 
@@ -23,7 +26,8 @@ function createWindow() {
         width: 1800,
         height: 800,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true,
         }
     })
 

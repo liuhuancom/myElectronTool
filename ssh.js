@@ -1,15 +1,18 @@
 const { readFileSync } = require('fs');
 // const { app, BrowserWindow, Notification, ipcMain } = require('electron')
+const { remote, ipcRenderer } = window.require('electron');
 
 // console.log('app',app.getPath('userData '));
 // const electron = require('electron');
 // const configDir =  (electron.app || electron.remote.app).getPath('userData');
 // console.log(configDir);
-const Store = require('electron-store');
+// const Store = require('electron-store');
 
 // const store = new Store();
 
-
+let name = remote.app.store.get('name');
+console.log('web name',name);
+console.log('store path',remote.app.store.path);
 
 const { Client } = require('ssh2');
 
